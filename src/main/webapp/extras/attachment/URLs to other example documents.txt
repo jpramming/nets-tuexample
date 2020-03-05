@@ -1,0 +1,8 @@
+Some other example documents not included in this package for copyright reasons:
+
+PDF-dokument-116-sider.pdf
+http://www.pdfa.org/wp-content/uploads/2011/08/PDFA-forever_1b.pdf
+
+PDF-dokument-grafik.pdf
+http://ufm.dk/publikationer/2012/filer-2012/en-styrket-paedagoguddannelse.pdf
+

@@ -1,0 +1,147 @@
+/**
+ * Copyright (c) 2010, DanID A/S
+ * All rights reserved.
+ *
+ * Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+ *
+ *  - Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+ *  - Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+ *  - Neither the name of the DanID A/S nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES,
+ * INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+ * DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+ * SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+ * SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+ * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE
+ * USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ */
+
+body 										{ margin: 0; padding: 0; font-family: arial, sans-serif; font-size: 62.5%; text-align: left; color: #35353d; background: #cecece; }
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+	Accessibility
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+.accessibility								{ position: absolute; top: -9999em; left: -9999em; }
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+	Typography
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+h1,
+h2											{ font-size: 1.6em; font-weight: normal; line-height: 24px; margin: 0 0 15px; padding: 0 0 5px; border-bottom: 1px solid #aaacae; }
+p,a											{ font-size: 1.2em; font-weight: normal; line-height: 18px; }
+a											{ text-decoration: none; color: #0567ac; }
+img											{ border: none; }											
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+	Lists
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+ul											{ margin: 0; padding: 0; list-style: none; }
+ol											{ margin: 0; padding-left: 25px; }
+ol li											{ margin: 5px 0; }
+dl											{ font-size: 1.2em; margin: 2px 0 0; }
+dt, dd										{ margin: 0; display: inline; color: #414141; }
+
+#appPlaceholder.wide dl						{ margin-bottom: 5px; padding: 20px; border: 1px solid #BCCCCB; }
+#appPlaceholder.wide dl input.submit			{ width: auto; padding: 1px 6px; font-weight: bold; background: url(../images/bgButton.png) repeat-x 0 50%; overflow: visible; border: 1px solid #919797; font-size: 1em; } 
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+	Formelements
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+form										{ margin: 0; padding: 0; }
+fieldset										{ margin: 0; padding: 0; border: none; }
+legend										{ display: none; }
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+	Layout
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+#headerWrapper								{ width: 100%; background: #002a50 url(../images/tabmenu.png) repeat-x 0 100%; }
+#header										{ position: relative; width: 1200px; height: 174px; margin: 0 auto; }
+#logo										{ position: absolute; top: 72px; left: 5px; }
+
+.tools										{ position: absolute; top: 15px; right: 34px; }
+.tools ul									{ margin: 0; padding: 0; }
+.tools ul li									{ float: left; }
+.tools ul li a									{ display: block; width: 32px; height: 25px; }						
+.tools ul li#speaker a							{ background: url(../images/icons/speaker.png) no-repeat 50% 50%; }
+
+.button-wrapper								{ position: absolute; bottom: 8px; right: 1px; }
+.button-wrapper a							{ float: left; margin-right: 5px; padding: 0 57px; line-height: 24px; display: block; color: #fff; background: #ff8a2c; }
+
+/* tab menu */
+ul#tabs										{ position: absolute; bottom: 0; }
+ul#tabs li									{ float: left; margin: 0 5px; padding: 0; list-style-type: none; background: url(../images/tabLeft.png) no-repeat 0 0; }
+ul#tabs li a									{ float: left; display: block; height: 53px; padding: 0; color: #35353d; text-decoration: none; background: url(../images/tabRight.png) no-repeat 100% 0; }
+ul#tabs li a span								{ float: left; padding: 12px 30px 10px 14px; font-size: 1.166em; line-height: 24px; color: #fff; cursor: pointer; }
+ul#tabs li.selected,
+ul#tabs li.selected:hover						{ margin: 0 6px 0 -2px; padding: 0 9px 0 10px; background: url(../images/tabSelectedLeft.png) no-repeat 0 0; }
+ul#tabs li.selected a,
+ul#tabs li.selected:hover	a					{ margin-right: -22px; padding-right: 8px; display: block; background: url(../images/tabSelectedRight.png) no-repeat 100% 0; }
+ul#tabs li.selected a span	 					{ padding-left: 11px; padding-right: 33px; color: #35353d; }
+ul#tabs li:hover								{ background: url(../images/tabHoverLeft.png) no-repeat 0 0; }
+ul#tabs li:hover a							{ background: url(../images/tabHoverRight.png) no-repeat 100% 0; }
+ul#tabs li a span.nemidLogo					{ height: 16px; padding: 10px; width: 52px; background: url(../images/tabNemID.png) no-repeat 75% 75%; }
+ul#tabs li.selected a span.nemidLogo			{ background: url(../images/tabNemIDSelected.png) no-repeat 62% 75%; }
+
+ul#tabsSetting										{ position: relative; bottom: 0; }
+ul#tabsSetting li									{ float: left; margin: 0 5px; padding: 0; list-style-type: none; background: url(../images/tabLeft.png) no-repeat 0 0; }
+ul#tabsSetting li a									{ float: left; display: block; height: 53px; padding: 0; color: #35353d; text-decoration: none; background: url(../images/tabRight.png) no-repeat 100% 0; }
+ul#tabsSetting li a span								{ float: left; padding: 12px 30px 10px 14px; font-size: 1.166em; line-height: 24px; color: #fff; cursor: pointer; }
+ul#tabsSetting li.selected,
+ul#tabsSetting li.selected:hover						{ margin: 0 6px 0 -2px; padding: 0 9px 0 10px; background: url(../images/tabSelectedLeft.png) no-repeat 0 0; }
+ul#tabsSetting li.selected a,
+ul#tabsSetting li.selected:hover	a					{ margin-right: -22px; padding-right: 8px; display: block; background: url(../images/tabSelectedRight.png) no-repeat 100% 0; }
+ul#tabsSetting li.selected a span	 					{ padding-left: 11px; padding-right: 33px; color: #35353d; }
+ul#tabsSetting li:hover								{ background: url(../images/tabHoverLeft.png) no-repeat 0 0; }
+ul#tabsSetting li:hover a							{ background: url(../images/tabHoverRight.png) no-repeat 100% 0; }
+ul#tabsSetting li a span.nemidLogo					{ height: 16px; padding: 10px; width: 52px; background: url(../images/tabNemID.png) no-repeat 75% 75%; }
+ul#tabsSetting li.selected a span.nemidLogo			{ background: url(../images/tabNemIDSelected.png) no-repeat 62% 75%; }
+
+div#Standardindstillinger                   {  clear: both; border-top: 1px solid #aaacae;}  
+div#nmas-indstillinger                      {  clear: both; border-top: 1px solid #aaacae;}  
+#contentWrapper								{ width: 100%; min-height: 600px; background-color: #fff; }
+#content									{ position: relative; width: 1100px; margin: 0 auto; padding: 50px 0 20px; overflow: hidden; }
+#loginWrapper								{ overflow: hidden; }
+#appPlaceholder.wide						{ width: 500px; }
+#right-col									{ float: left; width: 365px; margin-left: 120px; }
+
+#signerWrapper .wide							{ width: 500px; }
+#signerWrapper #right-col					{ width: 197px; }
+
+ul.linkList a								{ padding-left: 15px; text-decoration: none; background: url(../images/icons/arrow.png) no-repeat 0 50%; }
+
+.thumbs										{ margin: 5px 0 30px; }
+.thumbs li									{ margin-bottom: 25px; }
+
+a.btn										{ padding: 2px 15px; color: #000; border-top: 1px solid #d0d0d0; border-bottom: 1px solid #d0d0d0; background: #fff; }
+/* Application placeholder */
+#appPlaceholder								{ float: left; }
+#appPlaceholder form							{ margin-top: 7px; }
+
+p.remember label								{ display: inline-block; padding-left: 17px; text-indent: -15px; cursor: pointer; }
+p.remember input								{ position: relative; top: -1px; width: 13px; height: 13px; margin:0; padding: 0; vertical-align: bottom; border: none; }
+
+.resizeable                                 {resize: both; overflow: auto;}
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+	Styling used for the demosite - frame
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+#frontpage									{ background: #fff; } 
+#frontpage h1								{ font-size: 2.6em; color: #000; margin-top: 100px; border: none; }
+#frontpage h2								{ font-size: 1.3em; color: #fff; margin: 0; padding: 7px 10px 2px; border-bottom: 1px solid #fff; border-top: 1px solid #919191; background: #757575; font-weight: bold; }
+#frontpage h3								{ font-size: 1.5em; color: #000; margin: 45px 0 13px; font-weight: normal; }
+#frontpage p									{ width: 830px; color: #000; }
+#frontpage p.small							{ margin: 5px 0 0; color: #414141; }
+#frontpage #content ul						{ overflow: hidden; width: 100%; margin-top: 90px; padding-bottom: 40px; }
+#frontpage #content ul li						{ position: relative; float: left; width: 226px; height: 170px; margin-right: 20px; padding-bottom: 30px; background: #a4a4a4; }
+#frontpage #content ul li p					{ width: auto; margin: 12px 10px; color: #fff; }
+#frontpage #content ul li a					{ position: absolute; bottom: 5px; right: 5px; }
+
+#demosite									{ background: #b4b4b4; }
+#demosite h1									{ color: #000; margin-top: 10px; padding: 0; border: none; }
+#demosite  #headerWrapper					{ background: #b4b4b4; }
+#demosite #menu								{ position: absolute; bottom: 5px; left: 5px; }
+#demosite #menu li							{ float: left; margin-right: 25px; }
+#demosite #menu li a							{ color: #fff; }
+#content .content-block						{ position: relative; float: left; width: 604px; height: 660px; margin-right: 20px; padding: 2px 16px; background: #e1e1e1; }
+#content .content-block .button-wrapper		{ bottom: 32px; right: 10px; } 
+#content .image-block						{ float: left; width: 308px; height: 490px; }
+#content .image-block img					{ margin-bottom: 20px; }

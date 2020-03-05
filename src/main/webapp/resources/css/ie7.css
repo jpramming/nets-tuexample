@@ -1,0 +1,33 @@
+/**
+ * Copyright (c) 2010, DanID A/S
+ * All rights reserved.
+ *
+ * Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+ *
+ *  - Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+ *  - Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+ *  - Neither the name of the DanID A/S nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES,
+ * INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+ * DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+ * SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+ * SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+ * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE
+ * USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ */
+
+/* tab menu */
+ul#tabs										{ position: absolute; bottom: 0; }
+ul#tabs li									{ display: inline-block; margin: 0 6px 0 5px; padding: 0; list-style-type: none; background: url(../images/tabLeft.png) no-repeat 0 0; }
+ul#tabs li a									{ float: left; min-width: 270px; display: block; height: 53px; padding: 0; color: #35353d; text-decoration: none; background: url(../images/tabRight.png) no-repeat 100% 0; }
+ul#tabs li a span								{ text-align: right!important;float: left; padding: 12px 30px 10px 14px; font-size: 1.166em; line-height: 24px; color: #fff; cursor: pointer; }
+ul#tabs li.selected,
+ul#tabs li.selected:hover						{ margin: 0 5px 0 -4px; padding: 0 9px 0 12px; background: url(../images/tabSelectedLeft.png) no-repeat 0 0; }
+ul#tabs li.selected a,
+ul#tabs li.selected:hover	a					{ margin-right: -22px; padding-right: 10px; display: block; background: url(../images/tabSelectedRight.png) no-repeat 100% 0; }
+ul#tabs li.selected a span	 					{ padding-left: 11px; padding-right: 33px; color: #35353d; }
+ul#tabs li:hover								{ background: url(../images/tabHoverLeft.png) no-repeat 0 0; }
+ul#tabs li:hover a							{ background: url(../images/tabHoverRight.png) no-repeat 100% 0; }
+ul#tabs li a span.nemidLogo					{ float: left; height: 16px; padding: 10px; width: 52px; background: url(../images/tabNemID.png) no-repeat 75% 75%; }
+ul#tabs li.selected a span.nemidLogo			{ background: url(../images/tabNemIDSelected.png) no-repeat 62% 75%; }

@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright (c) 2010, DanID A/S
+    All rights reserved.
+
+    Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+
+     - Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+     - Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+     - Neither the name of the DanID A/S nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+
+    THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES,
+    INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+    DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+    SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+    SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+    WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE
+    USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+-->
+<web-app version="2.4" xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+    <display-name>TUExample</display-name>
+	<distributable/>
+	<jsp-config>
+        <jsp-property-group>
+            <url-pattern>*.jsp</url-pattern>
+            <page-encoding>UTF-8</page-encoding>
+        </jsp-property-group>
+    </jsp-config>
+    <welcome-file-list>
+        <welcome-file>index.jsp</welcome-file>
+    </welcome-file-list>
+
+    <listener>
+        <listener-class>dk.certifikat.tuexample.AddBouncycastleProvider</listener-class>
+    </listener>
+
+    <servlet>
+        <servlet-name>pidCprMatchServlet</servlet-name>
+        <servlet-class>dk.certifikat.tuexample.extras.PidCprMatchServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>pidCprMatchServlet</servlet-name>
+        <url-pattern>/extras/pidcprmatch.html</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>pidCprLookupServlet</servlet-name>
+        <servlet-class>dk.certifikat.tuexample.extras.PidCprLookupServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>pidCprLookupServlet</servlet-name>
+        <url-pattern>/extras/pidcprlookup.html</url-pattern>
+    </servlet-mapping>
+	
+    <servlet>
+        <servlet-name>ridCprLookupServlet</servlet-name>
+        <servlet-class>dk.certifikat.tuexample.extras.RidCprLookupServlet</servlet-class>
+    </servlet>
+	<servlet-mapping>
+		<servlet-name>ridCprLookupServlet</servlet-name>
+		<url-pattern>/extras/ridcprlookup.html</url-pattern>
+	</servlet-mapping>	
+
+    <servlet>
+        <servlet-name>revocationCheckSelectorServlet</servlet-name>
+        <servlet-class>dk.certifikat.tuexample.extras.RevocationCheckSelectorServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>revocationCheckSelectorServlet</servlet-name>
+        <url-pattern>/extras/skift-spaerrelistecheck.html</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>signTextSelectorServlet</servlet-name>
+        <servlet-class>dk.certifikat.tuexample.extras.SignTextSelectorServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>signTextSelectorServlet</servlet-name>
+        <url-pattern>/extras/skift-signeringsteksttype.html</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>rememberUseridSelectorServlet</servlet-name>
+        <servlet-class>dk.certifikat.tuexample.extras.RememberUserIdSelectorServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>rememberUseridSelectorServlet</servlet-name>
+        <url-pattern>/extras/skift-rememberUserID.html</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>clientModeSelectorServlet</servlet-name>
+        <servlet-class>dk.certifikat.tuexample.extras.ClientModeSelectorServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>clientModeSelectorServlet</servlet-name>
+        <url-pattern>/extras/skift-jsclient-type.html</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>clientSizeSelectorServlet</servlet-name>
+        <servlet-class>dk.certifikat.tuexample.extras.ClientSizeSelectorServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>clientSizeSelectorServlet</servlet-name>
+        <url-pattern>/extras/skift-jsclient-size.html</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>nmasSetupServlet</servlet-name>
+        <servlet-class>dk.certifikat.tuexample.extras.NmasSetupServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>nmasSetupServlet</servlet-name>
+        <url-pattern>/extras/skift-nmas-setup.html</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>extrasAttachmentSignServlet</servlet-name>
+        <servlet-class>dk.certifikat.tuexample.extras.attachment.SignServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>extrasAttachmentSignServlet</servlet-name>
+        <url-pattern>/extras/sign.html</url-pattern>
+    </servlet-mapping>
+
+    <!-- Variant 1 -->
+	<filter>
+        <filter-name>variant1SecurityFilter</filter-name>
+        <filter-class>dk.certifikat.tuexample.variant1.LogonFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>variant1SecurityFilter</filter-name>
+        <url-pattern>/variant1/restricted/*</url-pattern>
+    </filter-mapping>
+
+    <servlet>
+        <servlet-name>variant1LogonServlet</servlet-name>
+        <servlet-class>dk.certifikat.tuexample.variant1.LogonServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>variant1LogonServlet</servlet-name>
+        <url-pattern>/variant1/logon.html</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>variant1LogoutServlet</servlet-name>
+        <servlet-class>dk.certifikat.tuexample.variant1.LogoutServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>variant1LogoutServlet</servlet-name>
+        <url-pattern>/variant1/logout.html</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>variant1SignServlet</servlet-name>
+        <servlet-class>dk.certifikat.tuexample.variant1.SignServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>variant1SignServlet</servlet-name>
+        <url-pattern>/variant1/sign.html</url-pattern>
+    </servlet-mapping>
+
+
+    <!-- Variant 2 -->
+	<filter>
+        <filter-name>variant2SecurityFilter</filter-name>
+        <filter-class>dk.certifikat.tuexample.variant2.LogonFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>variant2SecurityFilter</filter-name>
+        <url-pattern>/variant2/restricted/*</url-pattern>
+    </filter-mapping>
+
+    <servlet>
+        <servlet-name>variant2LogonServlet</servlet-name>
+        <servlet-class>dk.certifikat.tuexample.variant2.LogonServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>variant2LogonServlet</servlet-name>
+        <url-pattern>/variant2/logon.html</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>variant2LogoutServlet</servlet-name>
+        <servlet-class>dk.certifikat.tuexample.variant2.LogoutServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>variant2LogoutServlet</servlet-name>
+        <url-pattern>/variant2/logout.html</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>variant2SignServlet</servlet-name>
+        <servlet-class>dk.certifikat.tuexample.variant2.SignServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>variant2SignServlet</servlet-name>
+        <url-pattern>/variant2/sign.html</url-pattern>
+    </servlet-mapping>
+
+
+    <!-- Variant 3 -->
+	<filter>
+        <filter-name>variant3SecurityFilter</filter-name>
+        <filter-class>dk.certifikat.tuexample.variant3.LogonFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>variant3SecurityFilter</filter-name>
+        <url-pattern>/variant3/restricted/*</url-pattern>
+    </filter-mapping>
+
+    <servlet>
+        <servlet-name>variant3LogonServlet</servlet-name>
+        <servlet-class>dk.certifikat.tuexample.variant3.LogonServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>variant3LogonServlet</servlet-name>
+        <url-pattern>/variant3/logon.html</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>variant3LogoutServlet</servlet-name>
+        <servlet-class>dk.certifikat.tuexample.variant3.LogoutServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>variant3LogoutServlet</servlet-name>
+        <url-pattern>/variant3/logout.html</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>variant3SignServlet</servlet-name>
+        <servlet-class>dk.certifikat.tuexample.variant3.SignServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>variant3SignServlet</servlet-name>
+        <url-pattern>/variant3/sign.html</url-pattern>
+    </servlet-mapping>
+
+</web-app>

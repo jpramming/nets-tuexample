@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:sec="http://cxf.apache.org/configuration/security"
+  xmlns:http="http://cxf.apache.org/transports/http/configuration"
+  xmlns:jaxws="http://java.sun.com/xml/ns/jaxws"
+  xsi:schemaLocation="
+  		http://cxf.apache.org/configuration/security
+  		http://cxf.apache.org/schemas/configuration/security.xsd
+        http://cxf.apache.org/transports/http/configuration
+        http://cxf.apache.org/schemas/configuration/http-conf.xsd
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+    
+	<!-- Denne CXF konfigurationsfil benyttes både til PID og RID servicen -->
+	
+	<http:conduit name="*.http-conduit">
+    
+		<http:tlsClientParameters secureSocketProtocol="TLS">
+			<sec:keyManagers keyPassword="Test1234">
+				<sec:keyStore type="JKS" password="Test1234" resource="wsclientkeystore.jks"/>
+			</sec:keyManagers>
+			<sec:trustManagers>
+				<sec:keyStore type="JKS" password="Test1234" resource="wsclienttruststore.jks"/>
+			</sec:trustManagers>
+			<sec:cipherSuitesFilter>
+				<sec:include>.*</sec:include>
+				<sec:exclude>.*_DH_anon_.*</sec:exclude>
+			</sec:cipherSuitesFilter>
+		</http:tlsClientParameters>
+		
+		<http:client AutoRedirect="true" Connection="Keep-Alive" />
+		
+    </http:conduit>
+</beans>
