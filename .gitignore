@@ -1,6 +1,9 @@
 # Maven build folder
 target/
 
+# Logs folder
+logs/
+
 # IntelliJ IDEA project files
 *.iml
 *.iws
