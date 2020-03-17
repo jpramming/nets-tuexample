@@ -9,8 +9,7 @@
     <url>http://www.certifikat.dk</url>
 
     <description>Eksempel til tjenesteudbydere.</description>
-    
-    
+
     <dependencies>
         <dependency>
             <groupId>commons-logging</groupId>
@@ -81,7 +80,7 @@
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
             <version>${commons-io.version}</version>
-        </dependency>       
+        </dependency>
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
@@ -98,8 +97,44 @@
             <artifactId>commons-codec</artifactId>
             <version>1.2</version>
         </dependency>
+        <!-- Dependencies for upgrade to Java 11 -->
+
+        <!-- API, java.xml.bind module -->
+        <dependency>
+            <groupId>jakarta.xml.bind</groupId>
+            <artifactId>jakarta.xml.bind-api</artifactId>
+            <version>${jakarta.xml.bind-api.version}</version>
+        </dependency>
+
+        <!-- Runtime, com.sun.xml.bind module -->
+        <dependency>
+            <groupId>org.glassfish.jaxb</groupId>
+            <artifactId>jaxb-runtime</artifactId>
+            <version>${jaxb-runtime.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.xml.ws</groupId>
+            <artifactId>jaxws-api</artifactId>
+            <version>${jaxws-api.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.sun.xml.ws</groupId>
+            <artifactId>jaxws-ri</artifactId>
+            <version>${jaxws-ri.version}</version>
+            <type>pom</type>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.codehaus.woodstox</groupId>
+                    <artifactId>stax2-api</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>com.fasterxml.woodstox</groupId>
+                    <artifactId>woodstox-core</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
     </dependencies>
-    
+
     <build>
         <finalName>tuexample</finalName>
         <resources>
@@ -108,7 +143,7 @@
                 <includes>
                     <include>*.properties</include>
                     <include>version.txt</include>
-                    <include>log4j.xml</include>                    
+                    <include>log4j.xml</include>
                 </includes>
                 <filtering>true</filtering>
             </resource>
@@ -125,17 +160,17 @@
         </resources>
         <plugins>
             <plugin>
-                 <groupId>org.apache.maven.plugins</groupId>
-                 <artifactId>maven-eclipse-plugin</artifactId>
-                 <version>${maven-eclipse-plugin.version}</version>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-eclipse-plugin</artifactId>
+                <version>${maven-eclipse-plugin.version}</version>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-release-plugin</artifactId>
-                <version>2.5.3</version>
+                <version>${maven-release-plugin.version}</version>
             </plugin>
             <plugin>
-                <groupId>org.mortbay.jetty</groupId>
+                <groupId>org.eclipse.jetty</groupId>
                 <artifactId>jetty-maven-plugin</artifactId>
                 <version>${jetty-maven-plugin.version}</version>
                 <configuration>
@@ -148,16 +183,16 @@
                             <value>8085</value>
                         </systemProperty>
                         <systemProperty>
-                          <name>org.eclipse.jetty.server.Request.maxFormContentSize</name>
-                          <value>2000000000</value> <!-- default is 200000. "-1" is not accepted as max.  -->
-                        </systemProperty>                        
+                            <name>org.eclipse.jetty.server.Request.maxFormContentSize</name>
+                            <value>2000000000</value> <!-- default is 200000. "-1" is not accepted as max.  -->
+                        </systemProperty>
                     </systemProperties>
                 </configuration>
             </plugin>
             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>            
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-antrun-plugin</artifactId>
-                <version>${maven-antrun-plugin.version}</version>                
+                <version>${maven-antrun-plugin.version}</version>
                 <executions>
                     <execution>
                         <id>copySource</id>
@@ -178,51 +213,31 @@
                 </executions>
             </plugin>
             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>            
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-resources-plugin</artifactId>
-                <version>${maven-resources-plugin.version}</version>                
+                <version>${maven-resources-plugin.version}</version>
                 <configuration>
                     <encoding>ISO-8859-1</encoding>
                 </configuration>
             </plugin>
             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>			
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>${maven-compiler-plugin.version}</version>
                 <configuration>
-                    <compilerVersion>1.7</compilerVersion>
-                    <source>1.7</source>
-                    <target>1.7</target>
-                    <encoding>UTF-8</encoding>
+                    <compilerVersion>${java.version}</compilerVersion>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                    <encoding>${source.encoding}</encoding>
                 </configuration>
             </plugin>
-            <plugin>
-             <groupId>org.apache.maven.plugins</groupId>
-              <artifactId>maven-toolchains-plugin</artifactId>
-              <version>1.1</version>
-              <executions>
-                <execution>
-                  <goals>
-                    <goal>toolchain</goal>
-                  </goals>
-                </execution>
-              </executions>
-              <configuration>
-                <toolchains>
-                  <jdk>
-                    <version>1.7</version>
-                    <vendor>sun</vendor>
-                  </jdk>
-                </toolchains>
-              </configuration>
-            </plugin>            
             <plugin>
                 <groupId>com.mycila</groupId>
                 <artifactId>license-maven-plugin</artifactId>
                 <version>${maven-mycila.version}</version>
                 <configuration>
                     <header>src/main/resources/license.txt</header>
-                    <strictCheck>true</strictCheck>                                        
+                    <strictCheck>true</strictCheck>
                     <includes>
                         <include>src/main/java/**</include>
                         <include>src/main/webapp/**</include>
@@ -233,7 +248,7 @@
                         <exclude>src/main/webapp/extras/attachment/plain.txt</exclude>
                         <exclude>src/main/webapp/extras/attachment/URLs to other example documents.txt</exclude>
                     </excludes>
-                     <properties>
+                    <properties>
                         <year>2010</year>
                         <owner>DanID A/S</owner>
                         <organization>DanID A/S</organization>
@@ -249,7 +264,7 @@
             </plugin>
         </plugins>
     </build>
-    
+
     <repositories>
         <repository>
             <id>maven repository</id>
@@ -261,7 +276,7 @@
             <releases>
                 <enabled>true</enabled>
             </releases>
-        </repository>        
+        </repository>
     </repositories>
 
     <reporting>
@@ -291,14 +306,14 @@
             </plugin>
         </plugins>
     </reporting>
-    
+
     <profiles>
-        
+
         <profile>
             <id>pp-profile</id>
-             <activation>
+            <activation>
                 <activeByDefault>true</activeByDefault>
-            </activation>                
+            </activation>
             <properties>
                 <nemid.applet.server.url.prefix>https://appletk.danid.dk</nemid.applet.server.url.prefix>
                 <nemid.applet.parameter.signing.keystore>/appletkeystore.jks</nemid.applet.parameter.signing.keystore>
@@ -307,7 +322,7 @@
                 <nemid.applet.parameter.signing.keystore.keypassword>F1VwgW26tgRf1+5w4LwqFg==</nemid.applet.parameter.signing.keystore.keypassword>
                 <nemid.pidservice.serviceproviderid>33585861</nemid.pidservice.serviceproviderid>
                 <nemid.ridservice.serviceproviderid>66431</nemid.ridservice.serviceproviderid>
-                <oces2.environment>OCESII_DANID_ENV_PREPROD</oces2.environment>                
+                <oces2.environment>OCESII_DANID_ENV_PREPROD</oces2.environment>
                 <nemid.serviceprovider.logonto>www.nemid.nu</nemid.serviceprovider.logonto>
                 <nemid.codefile.iframe.src.url>https://codefileclient.pp.danid.dk</nemid.codefile.iframe.src.url>
             </properties>
@@ -317,25 +332,28 @@
                     <resource>
                         <directory>src/main/resources/pp</directory>
                     </resource>
-                </resources>                    
+                </resources>
             </build>
         </profile>
-                    
+
     </profiles>
 
     <properties>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <java.version>1.7</java.version>
+        <source.encoding>UTF-8</source.encoding>
 
-        <maven-antrun-plugin.version>1.7</maven-antrun-plugin.version>        
-        <maven-compiler-plugin.version>2.0.2</maven-compiler-plugin.version>
-        <maven-eclipse-plugin.version>2.9</maven-eclipse-plugin.version>    
-        <maven-javadoc-plugin.version>2.9</maven-javadoc-plugin.version>
-        <jetty-maven-plugin.version>7.6.16.v20140903</jetty-maven-plugin.version>
+        <maven-release-plugin.version>2.5.3</maven-release-plugin.version>
+        <maven-antrun-plugin.version>1.8</maven-antrun-plugin.version>
+        <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
+        <maven-eclipse-plugin.version>2.10</maven-eclipse-plugin.version>
+        <maven-javadoc-plugin.version>3.1.1</maven-javadoc-plugin.version>
+        <jetty-maven-plugin.version>9.4.26.v20200117</jetty-maven-plugin.version>
         <maven-mycila.version>2.0</maven-mycila.version>
-        <maven-project-info-reports-plugin.version>2.5.1</maven-project-info-reports-plugin.version>
-        <maven-resources-plugin.version>2.6</maven-resources-plugin.version>        
-        <maven-war-plugin.version>2.3</maven-war-plugin.version>
-        
+        <maven-project-info-reports-plugin.version>3.0.0</maven-project-info-reports-plugin.version>
+        <maven-resources-plugin.version>3.1.0</maven-resources-plugin.version>
+        <maven-war-plugin.version>3.2.3</maven-war-plugin.version>
+
         <commons-io.version>1.4</commons-io.version>
         <commons-logging.version>1.1</commons-logging.version>
         <jstl.version>1.1.2</jstl.version>
@@ -347,6 +365,10 @@
         <servlet-api.version>2.4</servlet-api.version>
         <taglibs.version>1.1.2</taglibs.version>
         <xalan.version>2.6.0</xalan.version>
-        <xerces.version>2.8.0</xerces.version>        
+        <xerces.version>2.8.0</xerces.version>
+        <jakarta.xml.bind-api.version>2.3.2</jakarta.xml.bind-api.version>
+        <jaxb-runtime.version>2.3.2</jaxb-runtime.version>
+        <jaxws-api.version>2.3.1</jaxws-api.version>
+        <jaxws-ri.version>2.3.2</jaxws-ri.version>
     </properties>
 </project>

@@ -1,5 +1,6 @@
-﻿
-*** DANISH ***
+﻿# Nets DanID TU-examples Dockerized
+
+## DANISH
 
 Introduktion til tjenesteudbyderpakken:
 http://www.nets.eu/dk-da/Service/kundeservice/nemid-tu/NemID-tjenesteudbyderpakken-okt-2014/Pages/default.aspx#tab1
@@ -20,7 +21,7 @@ PID servicen kan testes inde fra tuexample. Login med poces(privat), og herfra k
 
 
 
-*** ENGLISH ***
+## ENGLISH
 
 Introduction to tu-example can be found here:
 http://www.nets.eu/dk-da/Service/kundeservice/nemid-tu/NemID-tjenesteudbyderpakken-okt-2014/Pages/default.aspx#tab1
