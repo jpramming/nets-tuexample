@@ -16,12 +16,12 @@
 	
 	<http:conduit name="*.http-conduit">
     
-		<http:tlsClientParameters secureSocketProtocol="TLS">
+			<http:tlsClientParameters secureSocketProtocol="TLS">
 			<sec:keyManagers keyPassword="Test1234">
-				<sec:keyStore type="JKS" password="Test1234" resource="wsclientkeystore.jks"/>
+				<sec:keyStore type="JKS" password="${nemid.pidservice.signing.keystore.password}" resource="${nemid.pidservice.signing.keystore}"/>
 			</sec:keyManagers>
 			<sec:trustManagers>
-				<sec:keyStore type="JKS" password="Test1234" resource="wsclienttruststore.jks"/>
+				<sec:keyStore type="JKS" password="${nemid.pidservice.trust.keystore.password}" resource="${nemid.pidservice.trust.keystore}"/>
 			</sec:trustManagers>
 			<sec:cipherSuitesFilter>
 				<sec:include>.*</sec:include>

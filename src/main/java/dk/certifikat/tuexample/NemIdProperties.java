@@ -36,6 +36,10 @@ public class NemIdProperties {
     private static String appletParameterSigningKeystoreAlias;
     private static String appletParameterSigningKeystoreKeyPassword;
     private static String serviceProviderName;
+    private static String pidServiceTrustKeystore;
+    private static String pidServiceTrustKeystorePassword;
+    private static String pidServiceSigningKeystore;
+    private static String pidServiceSigningKeystorePassword;
     private static String pidServiceProviderId;
     private static String ridServiceProviderId;
     private static String codeFileIframeSrc;
@@ -70,6 +74,10 @@ public class NemIdProperties {
         appletParameterSigningKeystorePassword = EncryptionHelper.getInstance().decrypt(getRequiredProperty(properties, "nemid.applet.parameter.signing.keystore.password", " to the password to the keystore pointed to by nemid.applet.parameter.signing.keystore"));
         appletParameterSigningKeystoreAlias = getRequiredProperty(properties, "nemid.applet.parameter.signing.keystore.alias", " to the alias of the key to be used in the keystore pointed to by nemid.applet.parameter.signing.keystore");
         appletParameterSigningKeystoreKeyPassword = EncryptionHelper.getInstance().decrypt(getRequiredProperty(properties, "nemid.applet.parameter.signing.keystore.keypassword", " to the password for the key pointed to by nemid.applet.parameter.signing.keystore.alias"));
+        pidServiceTrustKeystore = getRequiredProperty(properties, "nemid.pidservice.trust.keystore", " to your PID service trust keystore file");
+        pidServiceTrustKeystorePassword = getRequiredProperty(properties, "nemid.pidservice.trust.keystore.password", " to your PID service trust keystore file");
+        pidServiceSigningKeystore = getRequiredProperty(properties, "nemid.pidservice.signing.keystore", " to your PID service trust keystore file");
+        pidServiceSigningKeystorePassword = getRequiredProperty(properties, "nemid.pidservice.signing.keystore.password", " to your PID service trust keystore file");
         pidServiceProviderId = getRequiredProperty(properties, "nemid.pidservice.serviceproviderid", " to your PID service provider id");
         ridServiceProviderId = getOptionalProperty(properties, "nemid.ridservice.serviceproviderid", " to your RID service provider id");
         serviceProviderName = getRequiredProperty(properties, "nemid.serviceprovider.logonto", " to you service provider name");
@@ -126,6 +134,14 @@ public class NemIdProperties {
         return appletParameterSigningKeystoreKeyPassword;
     }
 
+    public static String getPidServiceTrustKeystore() { return pidServiceTrustKeystore; }
+
+    public static String getPidServiceTrustKeystorePassword() { return pidServiceTrustKeystorePassword; }
+
+    public static String getPidServiceSigningKeystore() { return pidServiceSigningKeystore; }
+
+    public static String getPidServiceSigningKeystorePassword() { return pidServiceSigningKeystorePassword; }
+
     public static String getPidServiceProviderId() {
         return pidServiceProviderId;
     }
@@ -174,6 +190,55 @@ public class NemIdProperties {
         return print;
     }
 
+    public static void setServerUrlPrefix(String serverUrlPrefix) {
+        NemIdProperties.serverUrlPrefix = serverUrlPrefix;
+    }
 
+    public static void setAppletParameterSigningKeystore(String appletParameterSigningKeystore) {
+        NemIdProperties.appletParameterSigningKeystore = appletParameterSigningKeystore;
+    }
 
+    public static void setAppletParameterSigningKeystorePassword(String appletParameterSigningKeystorePassword) {
+        NemIdProperties.appletParameterSigningKeystorePassword = EncryptionHelper.getInstance().decrypt(appletParameterSigningKeystorePassword);
+    }
+
+    public static void setAppletParameterSigningKeystoreAlias(String appletParameterSigningKeystoreAlias) {
+        NemIdProperties.appletParameterSigningKeystoreAlias = appletParameterSigningKeystoreAlias;
+    }
+
+    public static void setAppletParameterSigningKeyPassword(String appletParameterSigningKeyPassword) {
+        NemIdProperties.appletParameterSigningKeystoreKeyPassword = EncryptionHelper.getInstance().decrypt(appletParameterSigningKeyPassword);
+    }
+
+    public static void setServiceProviderName(String serviceProviderName) {
+        NemIdProperties.serviceProviderName = serviceProviderName;//?
+    }
+
+    public static void setCodeFileIframeSrc(String codeFileIframeSrc) {
+        NemIdProperties.codeFileIframeSrc = codeFileIframeSrc;
+    }
+
+    public static void setPidServiceProviderId(String pidServiceProviderId) {
+        NemIdProperties.pidServiceProviderId = pidServiceProviderId;
+    }
+
+    public static void setRidServiceProviderId(String ridServiceProviderId) {
+        NemIdProperties.ridServiceProviderId = ridServiceProviderId;
+    }
+
+    public static void setPidServiceTrustKeystore(String pidServiceTrustKeystore) {
+        NemIdProperties.pidServiceTrustKeystore = pidServiceTrustKeystore;
+    }
+
+    public static void setPidServiceTrustKeystorePassword(String pidServiceTrustKeystorePassword) {
+        NemIdProperties.pidServiceTrustKeystorePassword = pidServiceTrustKeystorePassword;
+    }
+
+    public static void setPidServiceSigningKeystore(String pidServiceSigningKeystore) {
+        NemIdProperties.pidServiceSigningKeystore = pidServiceSigningKeystore;
+    }
+
+    public static void setPidServiceSigningKeystorePassword(String pidServiceSigningKeystorePassword) {
+        NemIdProperties.pidServiceSigningKeystorePassword = pidServiceSigningKeystorePassword;
+    }
 }

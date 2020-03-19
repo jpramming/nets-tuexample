@@ -268,6 +268,7 @@
                     </form>
                     </div>
                     <div class="button-wrapper">
+                        <a href="testConnectivity.html" title="Klik her for at teste Forbindelse til NEMID">Test Forbindelse</a>
 						<a href="pid.jsp" title="Klik her for at teste PID">Test PID</a>
 						<a href="rid.jsp" title="Klik her for at teste RID">Test RID</a>
                     </div>

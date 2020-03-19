@@ -142,6 +142,7 @@
                 <directory>src/main/resources</directory>
                 <includes>
                     <include>*.properties</include>
+                    <include>pidclientsecurity.xml</include>
                     <include>version.txt</include>
                     <include>log4j.xml</include>
                 </includes>
@@ -151,6 +152,7 @@
                 <directory>src/main/resources</directory>
                 <excludes>
                     <exclude>*.properties</exclude>
+                    <exclude>pidclientsecurity.xml</exclude>
                     <exclude>local/**</exclude>
                     <exclude>pp/**</exclude>
                     <exclude>ig/**</exclude>
@@ -320,6 +322,10 @@
                 <nemid.applet.parameter.signing.keystore.password>F1VwgW26tgRf1+5w4LwqFg==</nemid.applet.parameter.signing.keystore.password>
                 <nemid.applet.parameter.signing.keystore.alias>appletsign</nemid.applet.parameter.signing.keystore.alias>
                 <nemid.applet.parameter.signing.keystore.keypassword>F1VwgW26tgRf1+5w4LwqFg==</nemid.applet.parameter.signing.keystore.keypassword>
+                <nemid.pidservice.trust.keystore>/wsclienttruststore.jks</nemid.pidservice.trust.keystore>
+                <nemid.pidservice.trust.keystore.password>Test1234</nemid.pidservice.trust.keystore.password>
+                <nemid.pidservice.signing.keystore>/wsclientkeystore.jks</nemid.pidservice.signing.keystore>
+                <nemid.pidservice.signing.keystore.password>Test1234</nemid.pidservice.signing.keystore.password>
                 <nemid.pidservice.serviceproviderid>33585861</nemid.pidservice.serviceproviderid>
                 <nemid.ridservice.serviceproviderid>66431</nemid.ridservice.serviceproviderid>
                 <oces2.environment>OCESII_DANID_ENV_PREPROD</oces2.environment>

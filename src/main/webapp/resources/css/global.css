@@ -145,3 +145,5 @@ p.remember input								{ position: relative; top: -1px; width: 13px; height: 13
 #content .content-block .button-wrapper		{ bottom: 32px; right: 10px; } 
 #content .image-block						{ float: left; width: 308px; height: 490px; }
 #content .image-block img					{ margin-bottom: 20px; }
+
+.error                                      { color: #b40000; font-size: 1.2em; font-weight: normal; }
