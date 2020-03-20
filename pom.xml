@@ -136,7 +136,10 @@
     </dependencies>
 
     <build>
-        <finalName>tuexample</finalName>
+        <finalName>tuexample-${environment}</finalName>
+        <filters>
+            <filter>src/main/resources/environment/${environment}/environment.properties</filter>
+        </filters>
         <resources>
             <resource>
                 <directory>src/main/resources</directory>
@@ -146,6 +149,9 @@
                     <include>version.txt</include>
                     <include>log4j.xml</include>
                 </includes>
+                <excludes>
+                    <exclude>environment/**</exclude>
+                </excludes>
                 <filtering>true</filtering>
             </resource>
             <resource>
@@ -153,11 +159,12 @@
                 <excludes>
                     <exclude>*.properties</exclude>
                     <exclude>pidclientsecurity.xml</exclude>
-                    <exclude>local/**</exclude>
-                    <exclude>pp/**</exclude>
-                    <exclude>ig/**</exclude>
+                    <exclude>environment/**</exclude>
                 </excludes>
                 <filtering>false</filtering>
+            </resource>
+            <resource>
+                <directory>src/main/resources/environment/${environment}</directory>
             </resource>
         </resources>
         <plugins>
@@ -310,38 +317,27 @@
     </reporting>
 
     <profiles>
-
         <profile>
             <id>pp-profile</id>
             <activation>
                 <activeByDefault>true</activeByDefault>
             </activation>
             <properties>
-                <nemid.applet.server.url.prefix>https://appletk.danid.dk</nemid.applet.server.url.prefix>
-                <nemid.applet.parameter.signing.keystore>/appletkeystore.jks</nemid.applet.parameter.signing.keystore>
-                <nemid.applet.parameter.signing.keystore.password>F1VwgW26tgRf1+5w4LwqFg==</nemid.applet.parameter.signing.keystore.password>
-                <nemid.applet.parameter.signing.keystore.alias>appletsign</nemid.applet.parameter.signing.keystore.alias>
-                <nemid.applet.parameter.signing.keystore.keypassword>F1VwgW26tgRf1+5w4LwqFg==</nemid.applet.parameter.signing.keystore.keypassword>
-                <nemid.pidservice.trust.keystore>/wsclienttruststore.jks</nemid.pidservice.trust.keystore>
-                <nemid.pidservice.trust.keystore.password>Test1234</nemid.pidservice.trust.keystore.password>
-                <nemid.pidservice.signing.keystore>/wsclientkeystore.jks</nemid.pidservice.signing.keystore>
-                <nemid.pidservice.signing.keystore.password>Test1234</nemid.pidservice.signing.keystore.password>
-                <nemid.pidservice.serviceproviderid>33585861</nemid.pidservice.serviceproviderid>
-                <nemid.ridservice.serviceproviderid>66431</nemid.ridservice.serviceproviderid>
-                <oces2.environment>OCESII_DANID_ENV_PREPROD</oces2.environment>
-                <nemid.serviceprovider.logonto>www.nemid.nu</nemid.serviceprovider.logonto>
-                <nemid.codefile.iframe.src.url>https://codefileclient.pp.danid.dk</nemid.codefile.iframe.src.url>
+                <environment>pp</environment>
             </properties>
-            <build>
-                <finalName>pp</finalName>
-                <resources>
-                    <resource>
-                        <directory>src/main/resources/pp</directory>
-                    </resource>
-                </resources>
-            </build>
         </profile>
-
+        <profile>
+            <id>ig-profile</id>
+            <properties>
+                <environment>ig</environment>
+            </properties>
+        </profile>
+        <profile>
+            <id>local-profile</id>
+            <properties>
+                <environment>local</environment>
+            </properties>
+        </profile>
     </profiles>
 
     <properties>

@@ -40,6 +40,7 @@ public class NemIdProperties {
     private static String pidServiceTrustKeystorePassword;
     private static String pidServiceSigningKeystore;
     private static String pidServiceSigningKeystorePassword;
+    private static String pidServiceSigningKeystoreKeyPassword;
     private static String pidServiceProviderId;
     private static String ridServiceProviderId;
     private static String codeFileIframeSrc;
@@ -76,8 +77,9 @@ public class NemIdProperties {
         appletParameterSigningKeystoreKeyPassword = EncryptionHelper.getInstance().decrypt(getRequiredProperty(properties, "nemid.applet.parameter.signing.keystore.keypassword", " to the password for the key pointed to by nemid.applet.parameter.signing.keystore.alias"));
         pidServiceTrustKeystore = getRequiredProperty(properties, "nemid.pidservice.trust.keystore", " to your PID service trust keystore file");
         pidServiceTrustKeystorePassword = getRequiredProperty(properties, "nemid.pidservice.trust.keystore.password", " to your PID service trust keystore file");
-        pidServiceSigningKeystore = getRequiredProperty(properties, "nemid.pidservice.signing.keystore", " to your PID service trust keystore file");
-        pidServiceSigningKeystorePassword = getRequiredProperty(properties, "nemid.pidservice.signing.keystore.password", " to your PID service trust keystore file");
+        pidServiceSigningKeystore = getRequiredProperty(properties, "nemid.pidservice.signing.keystore", " to your PID service signing keystore file");
+        pidServiceSigningKeystorePassword = getRequiredProperty(properties, "nemid.pidservice.signing.keystore.password", " to your PID service signing keystore file password");
+        pidServiceSigningKeystoreKeyPassword = getRequiredProperty(properties, "nemid.pidservice.signing.keystore.keypassword", " to your PID service signing key password");
         pidServiceProviderId = getRequiredProperty(properties, "nemid.pidservice.serviceproviderid", " to your PID service provider id");
         ridServiceProviderId = getOptionalProperty(properties, "nemid.ridservice.serviceproviderid", " to your RID service provider id");
         serviceProviderName = getRequiredProperty(properties, "nemid.serviceprovider.logonto", " to you service provider name");
@@ -141,6 +143,8 @@ public class NemIdProperties {
     public static String getPidServiceSigningKeystore() { return pidServiceSigningKeystore; }
 
     public static String getPidServiceSigningKeystorePassword() { return pidServiceSigningKeystorePassword; }
+
+    public static String getPidServiceSigningKeystoreKeyPassword() { return pidServiceSigningKeystoreKeyPassword; }
 
     public static String getPidServiceProviderId() {
         return pidServiceProviderId;
@@ -240,5 +244,9 @@ public class NemIdProperties {
 
     public static void setPidServiceSigningKeystorePassword(String pidServiceSigningKeystorePassword) {
         NemIdProperties.pidServiceSigningKeystorePassword = pidServiceSigningKeystorePassword;
+    }
+
+    public static void setPidServiceSigningKeystoreKeyPassword(String pidServiceSigningKeystoreKeyPassword) {
+        NemIdProperties.pidServiceSigningKeystoreKeyPassword = pidServiceSigningKeystoreKeyPassword;
     }
 }

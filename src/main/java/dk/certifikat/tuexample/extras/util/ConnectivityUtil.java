@@ -1,29 +1,18 @@
 package dk.certifikat.tuexample.extras.util;
 
 import dk.certifikat.tuexample.NemIdProperties;
+import org.apache.commons.lang.builder.ReflectionToStringBuilder;
 import org.apache.commons.lang.math.NumberUtils;
 import org.apache.commons.lang.time.DateUtils;
-import org.openoces.ooapi.certificate.OcesCertificate;
-import org.openoces.ooapi.certificate.OcesCertificateFactory;
-import org.openoces.ooapi.config.OOAPIConfiguration;
 import org.openoces.ooapi.environment.RootCertificates;
-import org.openoces.ooapi.pidservice.generated.ArrayOfPIDRequest;
-import org.openoces.ooapi.pidservice.generated.PIDReply;
 import org.openoces.ooapi.service.PidServiceProviderClient;
 import org.openoces.ooapi.service.RidOIOServiceProviderClient;
 import org.openoces.ooapi.service.ServiceProviderClient;
-import org.openoces.ooapi.service.impl.PidServiceProviderClientImpl;
-import org.openoces.serviceprovider.ConfigurationChecker;
 import org.openoces.serviceprovider.ServiceProviderSetup;
 
-import javax.net.ssl.SSLHandshakeException;
-import javax.net.ssl.SSLSocket;
-import javax.net.ssl.SSLSocketFactory;
 import java.io.*;
 import java.net.HttpURLConnection;
-import java.net.Socket;
 import java.net.URL;
-import java.net.UnknownHostException;
 import java.security.Key;
 import java.security.KeyStore;
 import java.security.cert.Certificate;
@@ -31,7 +20,6 @@ import java.security.cert.X509Certificate;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
-import java.util.Properties;
 
 public class ConnectivityUtil {
 
@@ -247,18 +235,6 @@ public class ConnectivityUtil {
         }
     }
 
-    /**
-     * Open SSL connection to host using keystore
-     * @return return true if connection succeeded
-     */
-    public static boolean verifyPokeCertificateHost(String keystorePath, String keystorePwd, String urlString) {
-        Properties systemProps = System.getProperties();
-        systemProps.put( "javax.net.ssl.trustStore", keystorePath);
-        systemProps.put( "javax.net.ssl.trustStorePassword", keystorePwd);
-        System.setProperties(systemProps);
-        return verifyPokeCertificateHost(urlString, systemProps);
-    }
-
     /**** Helper functions below ****/
 
     /**
@@ -276,31 +252,6 @@ public class ConnectivityUtil {
             e.printStackTrace();
             return "";
         }
-    }
-
-    /**
-     * Open SSL connection to host using keystore
-     * @return return true if connection succeeded
-     */
-    private static boolean verifyPokeCertificateHost(String urlString, Properties systemProps) {
-        try {
-            URL url = new URL(urlString);
-            String host=url.getHost();
-            int port=(url.getPort()>0)?url.getPort():"http".equalsIgnoreCase(url.getProtocol())?80:443;
-
-            SSLSocketFactory ssf = (SSLSocketFactory) SSLSocketFactory.getDefault();
-            try(Socket s = ssf.createSocket(host, port);
-                BufferedReader in = new BufferedReader(new InputStreamReader(s.getInputStream()));) {
-                String x = in.readLine();
-                System.out.println(x);
-                return true;
-            }
-        } catch (UnknownHostException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return false;
     }
 
     /**
@@ -365,18 +316,4 @@ public class ConnectivityUtil {
         }
         return chain;
     }
-
-    /**
-     * Create OcesCertificate from nemid configuration
-     * @param keystorePath
-     * @param keystorePwd
-     * @param keystoreKeyAlias
-     * @return
-     * @throws Exception IOException, NoSuchAlgorithmException, CertificateException, KeyStoreException or TrustCouldNotBeVerifiedException
-     */
-    private static OcesCertificate loadOcesCertificate(String keystorePath, String keystorePwd, String keystoreKeyAlias) throws Exception {
-        List<X509Certificate> chain = loadCertificateChain(keystorePath, keystorePwd, keystoreKeyAlias);
-        return OcesCertificateFactory.getInstance().generate(chain);
-    }
-
 }

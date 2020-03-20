@@ -48,6 +48,7 @@ public class TestConnectivityServlet extends HttpServlet {
         NemIdProperties.setPidServiceTrustKeystorePassword(request.getParameter("pidServiceTrustKeystorePassword"));
         NemIdProperties.setPidServiceSigningKeystore(request.getParameter("pidServiceSigningKeystore"));
         NemIdProperties.setPidServiceSigningKeystorePassword(request.getParameter("pidServiceSigningKeystorePassword"));
+        NemIdProperties.setPidServiceSigningKeystoreKeyPassword(request.getParameter("pidServiceSigningKeystoreKeyPassword"));
         NemIdProperties.setPidServiceProviderId(request.getParameter("pidServiceProviderId"));
         NemIdProperties.setRidServiceProviderId(request.getParameter("ridServiceProviderId"));
         NemIdProperties.setCodeFileIframeSrc(request.getParameter("codeFileIframeSrc"));
@@ -140,11 +141,9 @@ public class TestConnectivityServlet extends HttpServlet {
                 if (runTest && !ConnectivityUtil.verifyExists(NemIdProperties.getPidServiceTrustKeystore())) {
                     addMessage(resourceBundle.getString("verify.nemid.pidservice.trust.keystore.exists"));
                 }
-                else if (runTest && !ConnectivityUtil.verifyKeystoreAlias(NemIdProperties.getPidServiceTrustKeystore(),
-                        NemIdProperties.getPidServiceTrustKeystorePassword(),
-                        "voses")) {
-                    addMessage(resourceBundle.getString("verify.nemid.pidservice.trust.keystore.voses.valid"));
-                }
+
+                // TODO: Validate certificates in trust store
+
             }});
             add(new NEMIDProperty(){{
                 setFieldName("pidServiceTrustKeystorePassword");
@@ -178,6 +177,16 @@ public class TestConnectivityServlet extends HttpServlet {
                 }
             }});
             add(new NEMIDProperty(){{
+                setFieldName("pidServiceSigningKeystoreKeyPassword");
+                setPropertyKey("nemid.pidservice.signing.keystore.keypassword");
+                setPropertyValue(NemIdProperties.getPidServiceSigningKeystoreKeyPassword());
+                if (runTest && !ConnectivityUtil.verifyKeyPassword(NemIdProperties.getPidServiceSigningKeystore(),
+                        NemIdProperties.getPidServiceSigningKeystorePassword(), ConnectivityUtil.getFirstAlias(NemIdProperties.getPidServiceSigningKeystore(),
+                                NemIdProperties.getPidServiceSigningKeystorePassword()), NemIdProperties.getPidServiceSigningKeystoreKeyPassword())) {
+                    addMessage(resourceBundle.getString("verify.nemid.pidservice.signing.keystore.keypassword.valid"));
+                }
+            }});
+            add(new NEMIDProperty(){{
                 setFieldName("pidServiceProviderId");
                 setPropertyKey("nemid.pidservice.serviceproviderid");
                 setPropertyValue(NemIdProperties.getPidServiceProviderId());
@@ -191,7 +200,7 @@ public class TestConnectivityServlet extends HttpServlet {
             add(new NEMIDProperty(){{
                 setFieldName("ridServiceProviderId");
                 setPropertyKey("nemid.ridservice.serviceproviderid");
-                setPropertyValue(NemIdProperties.getPidServiceProviderId());
+                setPropertyValue(NemIdProperties.getRidServiceProviderId());
                 if (runTest && !ConnectivityUtil.verifyRidService()) {
                     addMessage(resourceBundle.getString("verify.nemid.ridservice.serviceproviderid.exists"));
                 }
