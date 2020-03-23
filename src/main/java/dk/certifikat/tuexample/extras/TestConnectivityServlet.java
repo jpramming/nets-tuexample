@@ -44,11 +44,6 @@ public class TestConnectivityServlet extends HttpServlet {
         NemIdProperties.setAppletParameterSigningKeystoreAlias(request.getParameter("appletParameterSigningKeystoreAlias"));
         NemIdProperties.setAppletParameterSigningKeyPassword(request.getParameter("appletParameterSigningKeyPassword"));
         NemIdProperties.setServiceProviderName(request.getParameter("serviceProviderName"));
-        NemIdProperties.setPidServiceTrustKeystore(request.getParameter("pidServiceTrustKeystore"));
-        NemIdProperties.setPidServiceTrustKeystorePassword(request.getParameter("pidServiceTrustKeystorePassword"));
-        NemIdProperties.setPidServiceSigningKeystore(request.getParameter("pidServiceSigningKeystore"));
-        NemIdProperties.setPidServiceSigningKeystorePassword(request.getParameter("pidServiceSigningKeystorePassword"));
-        NemIdProperties.setPidServiceSigningKeystoreKeyPassword(request.getParameter("pidServiceSigningKeystoreKeyPassword"));
         NemIdProperties.setPidServiceProviderId(request.getParameter("pidServiceProviderId"));
         NemIdProperties.setRidServiceProviderId(request.getParameter("ridServiceProviderId"));
         NemIdProperties.setCodeFileIframeSrc(request.getParameter("codeFileIframeSrc"));
@@ -71,11 +66,6 @@ public class TestConnectivityServlet extends HttpServlet {
                 if (runTest && !ConnectivityUtil.verifyExists(NemIdProperties.getAppletParameterSigningKeystore())) {
                     addMessage(resourceBundle.getString("verify.nemid.applet.parameter.signing.keystore.exists"));
                 }
-                else if (runTest && !ConnectivityUtil.verifySigningCertificate(NemIdProperties.getAppletParameterSigningKeystore(),
-                        NemIdProperties.getAppletParameterSigningKeystorePassword(),
-                        NemIdProperties.getAppletParameterSigningKeystoreAlias())) {
-                    addMessage(resourceBundle.getString("verify.nemid.applet.parameter.signing.keystore.verify"));
-                }
             }});
             add(new NEMIDProperty(){{
                 setFieldName("appletParameterSigningKeystorePassword");
@@ -95,6 +85,10 @@ public class TestConnectivityServlet extends HttpServlet {
                         NemIdProperties.getAppletParameterSigningKeystorePassword(),
                         NemIdProperties.getAppletParameterSigningKeystoreAlias())) {
                     addMessage(resourceBundle.getString("verify.nemid.applet.parameter.signing.keystore.alias.verify"));
+                } else if (runTest && !ConnectivityUtil.verifySigningCertificate(NemIdProperties.getAppletParameterSigningKeystore(),
+                        NemIdProperties.getAppletParameterSigningKeystorePassword(),
+                        NemIdProperties.getAppletParameterSigningKeystoreAlias())) {
+                    addMessage(resourceBundle.getString("verify.nemid.applet.parameter.signing.keystore.verify"));
                 }
             }});
             add(new NEMIDProperty(){{
@@ -138,6 +132,7 @@ public class TestConnectivityServlet extends HttpServlet {
                 setFieldName("pidServiceTrustKeystore");
                 setPropertyKey("nemid.pidservice.trust.keystore");
                 setPropertyValue(NemIdProperties.getPidServiceTrustKeystore());
+                setDisabled(true);
                 if (runTest && !ConnectivityUtil.verifyExists(NemIdProperties.getPidServiceTrustKeystore())) {
                     addMessage(resourceBundle.getString("verify.nemid.pidservice.trust.keystore.exists"));
                 }
@@ -149,6 +144,7 @@ public class TestConnectivityServlet extends HttpServlet {
                 setFieldName("pidServiceTrustKeystorePassword");
                 setPropertyKey("nemid.pidservice.trust.keystore.password");
                 setPropertyValue(NemIdProperties.getPidServiceTrustKeystorePassword());
+                setDisabled(true);
                 if (runTest && !ConnectivityUtil.verifyKeystore(NemIdProperties.getPidServiceTrustKeystore(),
                         NemIdProperties.getPidServiceTrustKeystorePassword())) {
                     addMessage(resourceBundle.getString("verify.nemid.pidservice.trust.keystore.password.valid"));
@@ -158,6 +154,7 @@ public class TestConnectivityServlet extends HttpServlet {
                 setFieldName("pidServiceSigningKeystore");
                 setPropertyKey("nemid.pidservice.signing.keystore");
                 setPropertyValue(NemIdProperties.getPidServiceSigningKeystore());
+                setDisabled(true);
                 if (runTest && !ConnectivityUtil.verifyExists(NemIdProperties.getPidServiceSigningKeystore())) {
                     addMessage(resourceBundle.getString("verify.nemid.pidservice.signing.keystore.exists"));
                 }
@@ -171,6 +168,7 @@ public class TestConnectivityServlet extends HttpServlet {
                 setFieldName("pidServiceSigningKeystorePassword");
                 setPropertyKey("nemid.pidservice.signing.keystore.password");
                 setPropertyValue(NemIdProperties.getPidServiceSigningKeystorePassword());
+                setDisabled(true);
                 if (runTest && !ConnectivityUtil.verifyKeystore(NemIdProperties.getPidServiceSigningKeystore(),
                         NemIdProperties.getPidServiceSigningKeystorePassword())) {
                     addMessage(resourceBundle.getString("verify.nemid.pidservice.signing.keystore.password.valid"));
@@ -180,6 +178,7 @@ public class TestConnectivityServlet extends HttpServlet {
                 setFieldName("pidServiceSigningKeystoreKeyPassword");
                 setPropertyKey("nemid.pidservice.signing.keystore.keypassword");
                 setPropertyValue(NemIdProperties.getPidServiceSigningKeystoreKeyPassword());
+                setDisabled(true);
                 if (runTest && !ConnectivityUtil.verifyKeyPassword(NemIdProperties.getPidServiceSigningKeystore(),
                         NemIdProperties.getPidServiceSigningKeystorePassword(), ConnectivityUtil.getFirstAlias(NemIdProperties.getPidServiceSigningKeystore(),
                                 NemIdProperties.getPidServiceSigningKeystorePassword()), NemIdProperties.getPidServiceSigningKeystoreKeyPassword())) {
