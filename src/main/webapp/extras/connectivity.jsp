@@ -71,12 +71,17 @@
                         <li class="error"><%= message %></li>
                     <% } %>
                     <p <% if (!nemidProperty.getMesssages().isEmpty()) { %>class="error"<% } %>>
+                        <img src="../resources/images/icons/<%= nemidProperty.getTestImage()%>" height="12" width="12"/>
                         <label for="<%= nemidProperty.getFieldName() %>" title="<%= nemidProperty.getPropertyKey() %>"><%= nemidProperty.getFieldName() %>:</label>
                         <input type="text" size="30" name="<%= nemidProperty.getFieldName() %>" id="<%= nemidProperty.getFieldName() %>" value="<%= nemidProperty.getPropertyValue() %>" title="<%= nemidProperty.getPropertyKey() %>" <% if (nemidProperty.getDisabled()) { %>disabled="true"<% } %>/>
                     </p>
-
                 <% } %>
-
+                <% if (BooleanUtils.isNotTrue((Boolean)request.getAttribute("runTest"))) { %>
+                    <p class="error">
+                        <img src="../resources/images/icons/icon_sad.png" height="12" width="12"/>
+                        Din konfiguration en endnu ikke testet!
+                    </p>
+                <% } %>
                 <input type="submit" value="Test forbindelse"/>
             </form>
         </div>

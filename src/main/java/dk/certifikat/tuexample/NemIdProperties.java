@@ -203,7 +203,11 @@ public class NemIdProperties {
     }
 
     public static void setAppletParameterSigningKeystorePassword(String appletParameterSigningKeystorePassword) {
-        NemIdProperties.appletParameterSigningKeystorePassword = EncryptionHelper.getInstance().decrypt(appletParameterSigningKeystorePassword);
+        try {
+            NemIdProperties.appletParameterSigningKeystorePassword = EncryptionHelper.getInstance().decrypt(appletParameterSigningKeystorePassword);
+        } catch (RuntimeException e) {
+            e.printStackTrace();;
+        }
     }
 
     public static void setAppletParameterSigningKeystoreAlias(String appletParameterSigningKeystoreAlias) {
@@ -211,7 +215,11 @@ public class NemIdProperties {
     }
 
     public static void setAppletParameterSigningKeyPassword(String appletParameterSigningKeyPassword) {
-        NemIdProperties.appletParameterSigningKeystoreKeyPassword = EncryptionHelper.getInstance().decrypt(appletParameterSigningKeyPassword);
+        try {
+            NemIdProperties.appletParameterSigningKeystoreKeyPassword = EncryptionHelper.getInstance().decrypt(appletParameterSigningKeyPassword);
+        } catch (RuntimeException e) {
+            e.printStackTrace();;
+        }
     }
 
     public static void setServiceProviderName(String serviceProviderName) {
