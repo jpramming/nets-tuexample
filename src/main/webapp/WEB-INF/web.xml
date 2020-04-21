@@ -73,6 +73,15 @@
     </servlet-mapping>
 
     <servlet>
+        <servlet-name>testConnectivityServlet</servlet-name>
+        <servlet-class>dk.certifikat.tuexample.extras.TestConnectivityServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>testConnectivityServlet</servlet-name>
+        <url-pattern>/extras/testConnectivity.html</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
         <servlet-name>signTextSelectorServlet</servlet-name>
         <servlet-class>dk.certifikat.tuexample.extras.SignTextSelectorServlet</servlet-class>
     </servlet>

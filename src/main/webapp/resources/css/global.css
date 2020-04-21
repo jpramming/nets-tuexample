@@ -141,7 +141,9 @@ p.remember input								{ position: relative; top: -1px; width: 13px; height: 13
 #demosite #menu								{ position: absolute; bottom: 5px; left: 5px; }
 #demosite #menu li							{ float: left; margin-right: 25px; }
 #demosite #menu li a							{ color: #fff; }
-#content .content-block						{ position: relative; float: left; width: 604px; height: 660px; margin-right: 20px; padding: 2px 16px; background: #e1e1e1; }
+#content .content-block						{ position: relative; float: left; width: 604px; min-height: 660px; margin-right: 20px; padding: 2px 16px; background: #e1e1e1; }
 #content .content-block .button-wrapper		{ bottom: 32px; right: 10px; } 
 #content .image-block						{ float: left; width: 308px; height: 490px; }
 #content .image-block img					{ margin-bottom: 20px; }
+
+.error                                      { color: #b40000; font-size: 1.2em; font-weight: normal; }
