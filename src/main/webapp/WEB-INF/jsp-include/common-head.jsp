@@ -1,4 +1,4 @@
-<%--
+<%@ page import="dk.certifikat.tuexample.NemIdProperties" %><%--
 
     Copyright (c) 2010, DanID A/S
     All rights reserved.
@@ -29,3 +29,8 @@
 <script type="text/javascript" src="<c:url value='/resources/js/jquery-3.2.1.min.js'/>"></script>
 <script type="text/javascript" src="<c:url value='/resources/js/jquery.cookie.js'/>"></script>
 <script type="text/javascript" src="<c:url value='/resources/js/common.js'/>"></script>
+<script type="text/javascript">
+    $( document ).ready(function() {
+        $('<div/>').addClass('tu_version').text('<%=NemIdProperties.getTuVersion()%>').appendTo($('body'));
+    });
+</script>
