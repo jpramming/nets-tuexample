@@ -1,8 +1,9 @@
-version: '3'
+version: "3.4"
 services:
 
   tuexample-jetty:
-    image: tuexample:latest
+    image: jpramming/nets-tuexample:latest
+    container_name: tuexample
     restart: "no"
     ports:
       - "8085:8080"
