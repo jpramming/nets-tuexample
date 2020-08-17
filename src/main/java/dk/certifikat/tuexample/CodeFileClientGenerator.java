@@ -203,6 +203,7 @@ public class CodeFileClientGenerator {
         params.add(new ParameterImpl("REQUESTISSUER", NemIdProperties.getServiceProviderName(), true));
         params.add(new ParameterImpl("LANGUAGE","da"));
         params.add(new ParameterImpl("ORIGIN", AuthClientUtils.generateOrigin(request), true));
+        params.add(new ParameterImpl("TU_VERSION", NemIdProperties.getTuVersion()));
         addToAdditionalParam(additionalParameters, "subjectdnfilter", Base64Handler.encode(subjectdnfilter));
         return params;
     }
