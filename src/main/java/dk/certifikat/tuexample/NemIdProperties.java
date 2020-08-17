@@ -49,6 +49,7 @@ public class NemIdProperties {
     private static String codeFileIframe;
     private static String codeFileParameters;
     private static String codeFileForm;
+    private static String tuVersion;
 
     private static Environments.Environment oces2Environment;
 
@@ -90,6 +91,8 @@ public class NemIdProperties {
         codeFileIframe = getRequiredProperty(properties, "nemid.codefile.iframe", "");
         codeFileParameters = getRequiredProperty(properties, "nemid.codefile.parameters", "");
         codeFileForm = getRequiredProperty(properties, "nemid.codefile.form", "");
+        tuVersion = getRequiredProperty(properties, "nemid.tu.version", "Version of the TU example code");
+
 
         logger.debug("serverUrlPrefix: " +serverUrlPrefix);
     }
@@ -168,7 +171,7 @@ public class NemIdProperties {
 
     public static String getCodeFileForm() { return codeFileForm; }
 
-
+    public static String getTuVersion() { return tuVersion; }
 
     public static String getCodeFileIframeOrigin() {
         int idx= codeFileIframeSrc.substring(8).indexOf('/'); // Skip http(s)://

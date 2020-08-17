@@ -147,3 +147,4 @@ p.remember input								{ position: relative; top: -1px; width: 13px; height: 13
 #content .image-block img					{ margin-bottom: 20px; }
 
 .error                                      { color: #b40000; font-size: 1.2em; font-weight: normal; }
+.tu_version                                 { position:absolute; right:0; top:0; z-index: 1000; font-size: 1.6em; margin: 2px; padding: 4px; color: black; background: wheat; border: 1px solid black; }
