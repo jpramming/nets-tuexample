@@ -344,7 +344,7 @@ public class TestConnectivityServlet extends HttpServlet {
     public enum TestResult {
         OK("icon_happy.png"),
         ERROR("icon_sad.png"),
-        MISSING("icon_gray.png");
+        MISSING("icon_grey.png");
 
         String icon;
 
