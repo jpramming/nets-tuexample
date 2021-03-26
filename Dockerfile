@@ -20,5 +20,5 @@ LABEL description="Jetty 9 JRE 11 runtime environment for Nets DanID TU-example"
 
 WORKDIR /var/lib/jetty
 
-COPY --from=build /opt/tuexample/target/pp.war /var/lib/jetty/webapps
+COPY --from=build /opt/tuexample/target/tuexample-pp.war /var/lib/jetty/webapps
 
