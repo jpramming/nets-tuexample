@@ -16,7 +16,7 @@
 	
 	<http:conduit name="*.http-conduit">
     
-			<http:tlsClientParameters secureSocketProtocol="TLS" disableCNCheck="true">
+			<http:tlsClientParameters secureSocketProtocol="TLS">
 			<sec:keyManagers keyPassword="${nemid.pidservice.signing.keystore.keypassword}">
 				<sec:keyStore type="JKS" password="${nemid.pidservice.signing.keystore.password}" resource="${nemid.pidservice.signing.keystore}"/>
 			</sec:keyManagers>
