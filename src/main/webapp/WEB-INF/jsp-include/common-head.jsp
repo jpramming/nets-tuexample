@@ -26,7 +26,7 @@
 <meta name="description" content="" />
 <meta name="keywords" content="" />
 <link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/global.css'/>" media="all" />
-<script type="text/javascript" src="<c:url value='/resources/js/jquery-3.2.1.min.js'/>"></script>
+<script type="text/javascript" src="<c:url value='/resources/js/jquery-3.5.1.min.js'/>"></script>
 <script type="text/javascript" src="<c:url value='/resources/js/jquery.cookie.js'/>"></script>
 <script type="text/javascript" src="<c:url value='/resources/js/common.js'/>"></script>
 <script type="text/javascript">
